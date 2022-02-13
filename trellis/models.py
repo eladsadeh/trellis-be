@@ -3,12 +3,16 @@ from django.db import models
 
 # Crop model
 class Crop(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     selected = models.BooleanField(default=False)
     spacing = models.IntegerField(blank=True, null=True, default=0) # spacing between plants in inches
     row_spacing = models.IntegerField(blank=True, null=True, default=0) # Space between rows
     start_to_tp = models.IntegerField(blank=True, null=True, default=0) # Days
     owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='crops')
+
+    class Meta:
+        unique_together = ['name', 'owner']
+        ordering = ['name']
 
     def __str__(self):
         return self.name
