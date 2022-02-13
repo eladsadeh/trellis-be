@@ -42,5 +42,5 @@ class Planting(models.Model):
     quantity = models.IntegerField()
     owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='plantings')
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
