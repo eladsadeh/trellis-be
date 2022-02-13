@@ -34,14 +34,14 @@ class PlantingList(generics.ListCreateAPIView):
 class CropDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Crop.objects.all()
     serializer_class = CropSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class VarietyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Variety.objects.all()
     serializer_class = VarietySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class PlantingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Planting.objects.all()
     serializer_class = PlantingSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

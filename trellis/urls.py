@@ -4,8 +4,7 @@ from . import views
 
 urlpatterns = [
     path('crops/', views.CropList.as_view(), name='crop_list'),
-    path('crop/<int:pk>',
-         views.CropDetail.as_view(), name='crop_detail'),
+    path('crops/<int:pk>', views.CropDetail.as_view(), name='crop_detail'),
     path('varieties/', views.VarietyList.as_view(), name='variety_list'),
     path('varieties/<int:pk>', views.VarietyDetail.as_view(), name='variety_detail'),
     path('plantings/', views.PlantingList.as_view(), name='planting_list'),
