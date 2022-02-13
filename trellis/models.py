@@ -36,11 +36,12 @@ class Variety(models.Model):
 
 # Planting model
 class Planting(models.Model):
+    name = models.CharField(max_length=300)
     variety = models.ForeignKey(Variety, on_delete=models.CASCADE, related_name='plantings')
     start_date = models.DateField(auto_now=False, auto_now_add=False)
     tp_date = models.DateField(auto_now=False, auto_now_add=False)
     quantity = models.IntegerField()
     owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='plantings')
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name
