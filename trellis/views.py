@@ -7,9 +7,23 @@ from trellis.permissions import IsOwner
 
 # INDEX, POST
 class CropList(generics.ListCreateAPIView):
-    queryset = Crop.objects.all()
+    # queryset = Crop.objects.all()
     serializer_class = CropSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsOwner]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        print(self.request.query_params)
+        print(self.request.user)
+        selected = self.request.query_params.get('selected')
+        print(selected)
+
+        if(selected == 'true'):
+            queryset = Crop.objects.filter(selected = True, owner=self.request.user)
+        else:
+            queryset = Crop.objects.filter(owner=self.request.user)
+
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
