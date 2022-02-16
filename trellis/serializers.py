@@ -6,7 +6,8 @@ from users.serializers import UserSerializer
 
 
 class VarietyShallowSerializer(serializers.ModelSerializer):
-    
+    crop_id = serializers.PrimaryKeyRelatedField(queryset = Crop.objects.all(), source='crop')
+
     class Meta:
         model = Variety
         exclude = ['owner']
