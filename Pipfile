@@ -2,7 +2,7 @@
 url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
-web: gunicorn trellis_django.wsgi
+
 
 [packages]
 django = "*"
