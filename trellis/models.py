@@ -8,6 +8,8 @@ class Crop(models.Model):
     spacing = models.IntegerField(blank=True, null=True, default=0) # spacing between plants in inches
     row_spacing = models.IntegerField(blank=True, null=True, default=0) # Space between rows
     start_to_tp = models.IntegerField(blank=True, null=True, default=0) # Days
+    seeds_per_plant = models.IntegerField(blank=True, null=True, default=0) # for TP
+    seeds_per_feet = models.IntegerField(blank=True, null=True, default=0) # for DS
     owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='crops')
 
     class Meta:
