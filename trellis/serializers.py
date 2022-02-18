@@ -19,8 +19,8 @@ class VarietySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Variety
-        # exclude = ['owner']
-        fields = '__all__'
+        exclude = ['owner']
+        # fields = '__all__'
         depth = 1
 
 class CropSerializer(serializers.ModelSerializer):
